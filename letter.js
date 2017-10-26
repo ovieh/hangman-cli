@@ -11,19 +11,26 @@ class Letter {
 
 }
 
-Letter.prototype.parseArray = function(){
-    let letterArray = this.state.word.split('');
-    return letterArray;
+Letter.prototype.parseArray = function () {
+    return this.state.word.split('');
 }
 
-Letter.prototype.parseUnderscore = function() {
-    let underScoreArray = Array.from(this.parseArray());    
+Letter.prototype.parseUnderscore = function () {
+    let underScoreArray = Array.from(this.parseArray());
     console.log(underScoreArray);
     return underScoreArray.fill("_");
 }
 
-let blah = new Letter;
-// blah.printWord();
-console.log(blah.parseUnderscore());
+Letter.prototype.printChar = function(arr) {
+    console.log(arr.join(" "));
+    // console.log(arr);
+}
+
+// Letter.prototype.
+
+// let blah = new Letter;
+// // blah.printWord();
+// console.log(blah.parseUnderscore());
+// blah.printChar(blah.parseUnderscore());
 
 module.exports = Letter;
