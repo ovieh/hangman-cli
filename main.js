@@ -1,37 +1,43 @@
 const Letter = require('./letter.js');
 const inquirer = require('inquirer');
+let guessesRemaining = 10;
 
 
 const newLetter = new Letter;
 
 const gamePrompt = () => {
 
-    let guessesRemaining = 0;
-    let alpha = /^[A-Za-z]+$/; 
+    let alpha = /^[A-Za-z]+$/;
 
-    if( guessesRemaining < 2 ) {
-
-
-    }
-    inquirer.prompt([
-        {
+    if (guessesRemaining > 0) {
+        inquirer.prompt([{
             name: 'letter',
             message: 'Guess a letter!',
-            validate: str =>{
+            validate: str => {
                 let pass = (str.length === 1 && str.match(alpha));
-                if(pass) {
+                if (pass) {
                     return true;
                 }
                 return 'Please enter a single letter'
+            },
+            filter: val => {
+                return val.toLowerCase();
             }
-        }
-    ]).then( guess =>{
+        }]).then(guess => {
 
-        guessesRemaining++;
-        
-        gamePrompt();
+            console.log(guess.letter);
 
-    });
+            guessesRemaining--;
+
+            gamePrompt();
+
+        });
+
+    }
+    else {
+
+    }
+
 
 }
 
