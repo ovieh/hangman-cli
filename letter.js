@@ -24,27 +24,26 @@ Letter.prototype.parseUnderscore = function () {
 
     let underScoreArray = [];
 
-    for(let i=0; i< this.parseArray().length; i++) {
-        if(this.parseArray()[i] == ' ') {
+    for (let i = 0; i < this.parseArray().length; i++) {
+        if (this.parseArray()[i] == ' ') {
             underScoreArray[i] = " ";
-        }
-        else  {
+        } else {
             underScoreArray[i] = "_";
         }
-        
+
     }
 
     return underScoreArray;
 
 }
 
-Letter.prototype.printChar = function(arr) {
+Letter.prototype.printChar = function (arr) {
 
     // var preserveWord = arr.filter(word => {
     //     if(word === " " ){
     //         arr[word] = "blah";
     //     }
-        
+
     // });
 
     // console.log(preserveWord.join(" "));
@@ -53,27 +52,32 @@ Letter.prototype.printChar = function(arr) {
     return arr.join(" ");
 }
 
-Letter.prototype.compare = function(char) {
-    if(this.parseArray().indexOf(char) !== -1){
+Letter.prototype.compare = function (char) {
+    if (this.parseArray().indexOf(char) !== -1) {
         return true;
     }
     return false;
 }
 
-Letter.prototype.vannaFlip = function(char) {
-    if(this.compare(char)) {
-        this.parseArray().forEach(element => {
-            if(char === element && this.parseUnderscore()[element] !== "_"){
-                this.parseUnderscore()[this.parseArray().indexOf(element)] = char;
-                console.log(this.underScoreArray);
+Letter.prototype.vannaFlip = function (char) {
+    // if(this.compare(char)) {
+        let dashArray = this.parseUnderscore();
+        let letterArray = this.parseArray();
+
+        for(let i=0; i<dashArray.length; i++){
+            if(char === letterArray[i]) {
+                dashArray[i] = letterArray[i];
             }
-        });
-        // console.log('true');
-    }
+        }
+
+        console.log(dashArray);
+        
+        return dashArray;
 
 }
 
 let blah = new Letter;
 blah.printWord();
-console.log(blah.printChar(blah.parseArray()));
+// console.log(blah.printChar(blah.parseUnderscore()));
+blah.vannaFlip('o');
 module.exports = Letter;
