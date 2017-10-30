@@ -8,6 +8,8 @@ const newLetter = new Letter;
 const gamePrompt = () => {
 
     let alpha = /^[A-Za-z]+$/;
+    let array = Array.from(newLetter.parseUnderscore());
+    
 
     if (guessesRemaining > 0) {
         inquirer.prompt([{
@@ -24,8 +26,15 @@ const gamePrompt = () => {
                 return val.toLowerCase();
             }
         }]).then(guess => {
+            console.log(array);
+            console.log(newLetter.state.word);
+            let strArray = newLetter.underScoreArray;
+            if(newLetter.compare(guess.letter)){
+                
 
-            console.log(guess.letter);
+                newLetter.vannaFlip(guess.letter);
+                console.log(newLetter.printChar(newLetter.underScoreArray));
+            }
 
             guessesRemaining--;
 

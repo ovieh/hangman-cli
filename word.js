@@ -15,9 +15,16 @@ class Word {
     }
 
 }
+
+Word.prototype.toLowerCase = function(word) {
+    // let lowerCaseWord = "";
+    // lowerCaseWord =
+
+    return word.toLowerCase();
+}
 // const word = new Word();
 
-// console.log(word.word);
+// console.log(word.word.toLowerCase());
 
 
 module.exports = Word;

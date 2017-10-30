@@ -4,80 +4,71 @@ class Letter {
     constructor() {
         const state = new Word();
         this.state = state;
+        this.parseArray();
+        this.parseUnderscore();
+        this.dashArray = [];
+        
     }
     printWord() {
         console.log(this.state.word)
     }
 
+    
 }
 
 Letter.prototype.parseArray = function () {
-    return this.state.word.split('');
+    this.stringArray = this.state.word.split('');
+    return this.stringArray;
 }
 
 Letter.prototype.parseUnderscore = function () {
-    // let underScoreArray = Array.from(this.parseArray());
-    // underScoreArray = underScoreArray.fill("_");
-    // this.underScoreArray = underScoreArray;
-    // console.log(underScoreArray);
-    // return this.underScoreArray;
+    this.parseArray();
 
-    let underScoreArray = [];
+    this.underScoreArray = [];
 
-    for (let i = 0; i < this.parseArray().length; i++) {
-        if (this.parseArray()[i] == ' ') {
-            underScoreArray[i] = " ";
+    for (let i = 0; i < this.stringArray.length; i++) {
+        if (this.stringArray[i] == ' ') {
+            this.underScoreArray[i] = " ";
         } else {
-            underScoreArray[i] = "_";
+            this.underScoreArray[i] = "_";
         }
 
     }
+    // console.log(this.underScoreArray + 'line 33');
 
-    return underScoreArray;
+    return this.underScoreArray;
 
 }
 
+
+
 Letter.prototype.printChar = function (arr) {
-
-    // var preserveWord = arr.filter(word => {
-    //     if(word === " " ){
-    //         arr[word] = "blah";
-    //     }
-
-    // });
-
-    // console.log(preserveWord.join(" "));
-    // console.log(arr);
 
     return arr.join(" ");
 }
 
 Letter.prototype.compare = function (char) {
-    if (this.parseArray().indexOf(char) !== -1) {
+    let lowerCaseArray = this.state.word.toLowerCase().split('');
+
+    if (lowerCaseArray.indexOf(char) !== -1) {
         return true;
     }
     return false;
 }
 
 Letter.prototype.vannaFlip = function (char) {
-    // if(this.compare(char)) {
-        let dashArray = this.parseUnderscore();
-        let letterArray = this.parseArray();
-
-        for(let i=0; i<dashArray.length; i++){
-            if(char === letterArray[i]) {
-                dashArray[i] = letterArray[i];
+        let lowerCaseArray = this.state.word.toLowerCase().split('');
+        for(let i=0; i  < this.underScoreArray.length; i++){
+            if(char === lowerCaseArray[i]) {
+                this.dashArray[i] = this.stringArray[i];
             }
         }
-
-        console.log(dashArray);
-        
-        return dashArray;
+        console.log(this.dashArray);
+        return this.dashArray;
 
 }
 
-let blah = new Letter;
-blah.printWord();
-// console.log(blah.printChar(blah.parseUnderscore()));
-blah.vannaFlip('o');
+// let blah = new Letter;
+
 module.exports = Letter;
+
