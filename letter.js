@@ -6,14 +6,17 @@ class Letter {
         this.state = state;
         this.parseArray();
         this.parseUnderscore();
-        this.dashArray = [];
-        
+        this.dashArray = Array.from(this.parseUnderscore());
+
     }
     printWord() {
         console.log(this.state.word)
     }
+    // newWord() {
+    //     this.state = this.state.pickWord();;
+    // }
 
-    
+
 }
 
 Letter.prototype.parseArray = function () {
@@ -34,6 +37,7 @@ Letter.prototype.parseUnderscore = function () {
         }
 
     }
+    
     // console.log(this.underScoreArray + 'line 33');
 
     return this.underScoreArray;
@@ -57,18 +61,23 @@ Letter.prototype.compare = function (char) {
 }
 
 Letter.prototype.vannaFlip = function (char) {
-        let lowerCaseArray = this.state.word.toLowerCase().split('');
-        for(let i=0; i  < this.underScoreArray.length; i++){
-            if(char === lowerCaseArray[i]) {
-                this.dashArray[i] = this.stringArray[i];
-            }
+    let lowerCaseArray = this.state.word.toLowerCase().split('');
+    for (let i = 0; i < this.underScoreArray.length; i++) {
+        if (char === lowerCaseArray[i]) {
+            this.dashArray[i] = this.stringArray[i];
+
         }
-        console.log(this.dashArray);
-        return this.dashArray;
+
+    }
+    // if (this.dashArray.join("") === this.stringArray.join("")) {
+    //     console.log('You got it right! Next word!');
+    //     return 0;
+    // }
+    // console.log(this.dashArray);
+    return this.dashArray;
 
 }
 
 // let blah = new Letter;
-
+// console.log(blah.newWord());
 module.exports = Letter;
-
