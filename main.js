@@ -2,6 +2,7 @@ const Letter = require('./letter.js');
 // const Word = require('./word.js');
 const inquirer = require('inquirer');
 let guessesRemaining = 12;
+let guessArray = [];
 
 
 let newLetter = new Letter;
@@ -9,7 +10,6 @@ let newLetter = new Letter;
 const gamePrompt = () => {
 
     let alpha = /^[A-Za-z]+$/;
-    let guessArray = [];
 
     if (guessesRemaining > 0 && newLetter.dashArray.join("") !== newLetter.stringArray.join('')) {
         inquirer.prompt([{
@@ -17,11 +17,11 @@ const gamePrompt = () => {
                 name: 'letter',
                 message: 'Guess a letter!',
                 validate: str => {
-                    let pass = (str.length === 1 && str.match(alpha));
+                    let pass = (str.length === 1 && str.match(alpha) && guessArray.indexOf(str) === -1);
                     if (pass) {
                         return true;
                     }
-                    return 'Please enter a single letter!';
+                    return 'Please enter a single new letter!';
                 },
                 // validate: str => {
                 //     let pass = (guessArray.indexOf(str) === -1)
@@ -36,6 +36,8 @@ const gamePrompt = () => {
             }
 
         ]).then(guess => {
+            guessArray.push(guess.letter);
+            
 
             if (newLetter.compare(guess.letter)) {
                 newLetter.vannaFlip(guess.letter);
@@ -46,7 +48,7 @@ const gamePrompt = () => {
                 console.log(newLetter.printChar(newLetter.dashArray));
 
             }
-
+            console.log(guessArray);
             guessesRemaining--;
 
             gamePrompt();
@@ -67,12 +69,9 @@ const gamePrompt = () => {
                 newGame();
             } else {
                 process.exit();
-
             }
 
         });
-        // console.log("You lost, new game starting!");
-        // gamePrompt();
 
     }
 
@@ -82,6 +81,7 @@ gamePrompt();
 
 const newGame = () => {
     guessesRemaining = 15;
+    guessArray=[];
     newLetter = new Letter;
     // console.log(newLetter);
     gamePrompt();
