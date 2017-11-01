@@ -38,8 +38,6 @@ Letter.prototype.parseUnderscore = function () {
 
     }
     
-    // console.log(this.underScoreArray + 'line 33');
-
     return this.underScoreArray;
 
 }

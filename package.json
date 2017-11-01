@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ovieh/hangman-cli#readme",
   "dependencies": {
     "chancejs": "0.0.8",
+    "colors": "^1.1.2",
     "inquire": "^0.4.8"
   }
 }

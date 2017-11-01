@@ -1,6 +1,7 @@
 const Letter = require('./letter.js');
-// const Word = require('./word.js');
 const inquirer = require('inquirer');
+const colors = require('colors');
+
 let guessesRemaining = 12;
 let guessArray = [];
 
@@ -22,17 +23,7 @@ const gamePrompt = () => {
                         return true;
                     }
                     return 'Please enter a single new letter!';
-                },
-                // validate: str => {
-                //     let pass = (guessArray.indexOf(str) === -1)
-                //     if (pass) {
-                //         return true;
-                //     }
-                //     return 'You already made that guess!';
-                // },
-                // filter: val => {
-                //     return val.toLowerCase();
-                // },
+                }
             }
 
         ]).then(guess => {
@@ -41,16 +32,14 @@ const gamePrompt = () => {
 
             if (newLetter.compare(guess.letter)) {
                 newLetter.vannaFlip(guess.letter);
-                console.log("CORRECT!")
+                console.log(colors.green("CORRECT!"))
                 console.log(newLetter.printChar(newLetter.dashArray));
             } else {
-                console.log("WRONG!")
+                console.log(colors.red("WRONG!"));
                 console.log(newLetter.printChar(newLetter.dashArray));
 
             }
-            console.log(guessArray);
             guessesRemaining--;
-
             gamePrompt();
         });
 
@@ -62,7 +51,7 @@ const gamePrompt = () => {
         inquirer.prompt([{
             type: 'confirm',
             name: 'continue',
-            message: 'You lost, would you like to continue',
+            message: 'You lost, would you like to continue?',
             default: true
         }]).then(answer => {
             if (answer.continue === true) {
