@@ -12,10 +12,6 @@ class Letter {
     printWord() {
         console.log(this.state.word)
     }
-    // newWord() {
-    //     this.state = this.state.pickWord();;
-    // }
-
 
 }
 
@@ -67,15 +63,8 @@ Letter.prototype.vannaFlip = function (char) {
         }
 
     }
-    // if (this.dashArray.join("") === this.stringArray.join("")) {
-    //     console.log('You got it right! Next word!');
-    //     return 0;
-    // }
-    // console.log(this.dashArray);
     return this.dashArray;
 
 }
 
-// let blah = new Letter;
-// console.log(blah.newWord());
 module.exports = Letter;

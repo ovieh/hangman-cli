@@ -69,9 +69,8 @@ const gamePrompt = () => {
 gamePrompt();
 
 const newGame = () => {
-    guessesRemaining = 15;
+    guessesRemaining = 12;
     guessArray=[];
     newLetter = new Letter;
-    // console.log(newLetter);
     gamePrompt();
 }

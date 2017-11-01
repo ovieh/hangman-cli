@@ -26,9 +26,4 @@ Word.prototype.toLowerCase = function(word) {
 
     return word.toLowerCase();
 }
-// const Blah = new Word;
-// Blah.printWosrd();
-// Blah.pickWord();
-// Blah.pickWord();
-// console.log(randomWord);
 module.exports = Word;
