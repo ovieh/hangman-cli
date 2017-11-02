@@ -1,6 +1,8 @@
 # hangman-cli
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![Build Status](https://travis-ci.org/ovieh/hangman-cli.svg?branch=master)](https://travis-ci.org/ovieh/hangman-cli)
+
 TODO: Put more badges here.
 
 > Hangman CLI is a command line based JavaScript app running on Node.JS.
